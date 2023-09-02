@@ -12,8 +12,7 @@
             </div>
         </center>
         <script>
-            const KINOPOISK_ID = new URLSearchParams(window.location.search).get('id');
-            new Kinobox('.kinobox_player', {search: {kinopoisk: KINOPOISK_ID}, 'players':{'Cdnmovies':{'enable':true,'position':4,'token':'{token}'}}}).init();
+            new Kinobox('.kinobox_player', {search: {kinopoisk: localStorage.getItem('film-id')}, 'players':{'Cdnmovies':{'enable':true,'position':4,'token':'{token}'}}}).init();
         </script>
     </body>
 </html>
