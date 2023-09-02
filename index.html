@@ -1,10 +1,38 @@
 <!DOCTYPE html>
 <html>
- <head>
-  <meta charset="utf-8">
-  <title>StaticHUN</title>
- </head>
- <body>
-
- </body>
+<head>
+	<meta charset="utf-8" />
+	<title>StaticHUN</title>
+	<style>
+	* {
+		box-sizing: border-box;
+		padding: 0;
+	}
+	.container {
+		max-width: 30%;
+		padding: 0 16px;
+		margin: 0 auto;
+	}
+	.search_input {
+		width: 100%;
+		border: thick double #000;
+		border-radius: 4px;
+		padding: 12px 16px;
+	}
+	</style>
+	<script src="https://kinobox.tv/kinobox.min.js"></script>
+</head>
+<body class="container">
+	<br/>
+	<form>
+		<input class="search_input" name="id" placeholder="Поиск фильма"> </form>
+	<script>
+	const params = new URLSearchParams(window.location.search).get('id')
+	const KINOPOISK_ID = params.split('/')[4] || params;
+	if(KINOPOISK_ID) {
+		const playerUrl = new URL('https://statichun.ru/videoPlayer.html');
+		window.open(playerUrl.toString() + '?id=' + KINOPOISK_ID, 'displayWindow', 'width=667px,height=377px')
+	}
+	</script>
+</body>
 </html>
