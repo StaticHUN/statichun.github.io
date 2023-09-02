@@ -17,7 +17,20 @@
                 localStorage.setItem('film-id', KINOPOISK_ID);
                 window.location.replace(window.location.origin + '/player.html');
             }
-            new Kinobox('.kinobox_player', {search: {kinopoisk: localStorage.getItem('film-id')}, 'players':{'Cdnmovies':{'enable':true,'position':4,'token':'{token}'}}}).init();
+            new Kinobox('.kinobox_player', {
+                search: {kinopoisk: localStorage.getItem('film-id')},
+                'players':{
+                    'Cdnmovies':{'enable':true,'position':1,'token':'{token}'},
+                    'Alloha':{'enable':true,'position':2,'token':'{token}'},
+                    'Ashdi':{'enable':false,'position':3,'token':'{token}'},
+                    'Bazon':{'enable':false,'position':4,'token':'{token}'},
+                    'Collaps':{'enable':true,'position':5,'token':'{token}'},
+                    'Hdvb':{'enable':true,'position':6,'token':'{token}'},
+                    'Iframe':{'enable':false,'position':7,'token':'{token}'},
+                    'Kodik':{'enable':false,'position':8,'token':'{token}'},
+                    'Videocdn':{'enable':false,'position':9,'token':'{token}'},
+                    'Voidboost':{'enable':false,'position':10,'token':'{token}'}
+                }}).init();
         </script>
     </body>
 </html>
