@@ -30,7 +30,7 @@
 		const params = this.message.value;
 		const KINOPOISK_ID = params.split('/')[4] || params;
 		if (KINOPOISK_ID) {
-			const playerUrl = new URL(window.location.origin + '/videoPlayer.html');
+			const playerUrl = new URL(window.location.origin + '/player.html');
 			localStorage.setItem('film-id', KINOPOISK_ID);
 			window.open(playerUrl.toString(), 'displayWindow', 'width=667px,height=377px')
 		}
