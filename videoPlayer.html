@@ -3,28 +3,17 @@
     <head>
         <meta charset="utf-8">
         <title>KinOnline</title>
+        <script src="https://kinobox.tv/kinobox.min.js"></script>
     </head>
     <body style="background-color: black; color: white;">
         <center>
             <div style="width: 640px; height: 480px;">
-                <div id="yohoho" data-resize="1"></div>
+                <div class="kinobox_player"></div>
             </div>
         </center>
         <script>
-            const yohoho = document.getElementById('yohoho');
-
-            function init() {
-                const searchParams = new URLSearchParams(window.location.search);
-                let id = searchParams.get('id');
-                if (id) {
-                    yohoho.setAttribute('data-kinopoisk', id);
-                } else {
-                    yohoho.innerText = 'ID is not specified!';
-                }
-            }
-
-            init();
+            const KINOPOISK_ID = new URLSearchParams(window.location.search).get('id');
+            new Kinobox('.kinobox_player', {search: {kinopoisk: KINOPOISK_ID}, 'players':{'Cdnmovies':{'enable':true,'position':4,'token':'{token}'}}}).init();
         </script>
-        <script src="https://yohoho.cc/yo.js"></script>
     </body>
 </html>
