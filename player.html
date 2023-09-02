@@ -12,6 +12,11 @@
             </div>
         </center>
         <script>
+            const KINOPOISK_ID = new URLSearchParams(window.location.search).get('id');
+            if (KINOPOISK_ID) {
+                localStorage.setItem('film-id', KINOPOISK_ID);
+                window.location.replace(window.location.origin + '/player.html');
+            }
             new Kinobox('.kinobox_player', {search: {kinopoisk: localStorage.getItem('film-id')}, 'players':{'Cdnmovies':{'enable':true,'position':4,'token':'{token}'}}}).init();
         </script>
     </body>
