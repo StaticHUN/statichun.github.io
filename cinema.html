@@ -36,7 +36,7 @@
                <div class="row">
 
                     <div class="col-md-12 col-sm-12">
-                         <form>
+                         <form name="search">
                               <div class="input-group mb-3">
                                    <input type="text" class="form-control" name="message">
                               </div>
@@ -59,7 +59,7 @@
                const params = this.message.value;
                const KINOPOISK_ID = params.split('/')[4] || params;
                if (KINOPOISK_ID) {
-                    const playerUrl = new URL(window.location.origin + 'player.html');
+                    const playerUrl = new URL(window.location.origin + '/player.html');
                     localStorage.setItem('film-id', KINOPOISK_ID);
                     window.open(playerUrl.toString(), 'displayWindow', 'width=680px,height=410px')
                }
