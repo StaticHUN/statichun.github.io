@@ -1,71 +1,95 @@
 <!DOCTYPE html>
-
 <html lang="en">
+
 <head>
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-     <meta name="description" content="">
-     <meta name="keywords" content="">
-     <meta name="author" content="">
-     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="description" content="Online Movie Viewing on PC, phone or tablet">
+  <meta name="keywords" content="online,movie,film,viewing,free,kinopoisk,imdb">
+  <meta name="author" content="Dmitry Sizov">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-     <title>StaticHUN - Cinema</title>
+  <title>StaticHUN - Cinema</title>
 
-     <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
 
-     <!-- Main css -->
-     <link rel="stylesheet" href="assets/css/style-player.css">
-     <link href="https://fonts.googleapis.com/css?family=Lora|Merriweather:300,400" rel="stylesheet">
-
+  <!-- Main css -->
+  <link rel="stylesheet" href="assets/css/style-player.css">
+  <link href="https://fonts.googleapis.com/css?family=Lora|Merriweather:300,400" rel="stylesheet">
 </head>
 
 <body>
 
-     <!-- PRE LOADER -->
-     <div class="preloader">
-          <div class="sk-spinner sk-spinner-wordpress">
-               <span class="sk-inner-circle"></span>
-          </div>
-     </div>
-     
-     <!-- Home Section -->
-     <section id="home" class="main-home parallax-section">
-          <div class="overlay"></div>
-          <div id="particles-js"></div>
-          <div class="container">
-               <div class="row">
+  <!-- PRE LOADER -->
+  <div class="preloader">
+    <div class="sk-spinner sk-spinner-wordpress">
+      <span class="sk-inner-circle"></span>
+    </div>
+  </div>
 
-                    <div class="col-md-12 col-sm-12">
-                         <form name="search">
-                              <div class="input-group mb-3">
-                                   <input type="text" class="form-control" name="message">
-                              </div>
-                         </form>
-                         <h4>Input ID or URL from Kinopoisk film/serial</h4>
-                    </div>
+  <!-- Home Section -->
+  <section id="home" class="main-home parallax-section">
+    <div class="overlay"></div>
+    <div id="particles-js"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <form name="search">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" name="message">
+            </div>
+          </form>
+          <h4>Input ID or URL from Kinopoisk/IMDB film/serial</h4>
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <div class="kinobox_player"></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-               </div>
-          </div>
-     </section>
-
-     <!-- SCRIPTS -->
-     <script src="assets/js/jquery.js"></script>
-     <script src="assets/js/particles.min.js"></script>
-     <script src="assets/js/app.js"></script>
-     <script src="assets/js/custom.js"></script>
-
-     <script>
-          document.forms.search.onsubmit = function() {
-               const params = this.message.value;
-               const KINOPOISK_ID = params.split('/')[4] || params;
-               if (KINOPOISK_ID) {
-                    const playerUrl = new URL(window.location.origin + '/player.html');
-                    localStorage.setItem('film-id', KINOPOISK_ID);
-                    window.open(playerUrl.toString(), 'displayWindow', 'width=680px,height=410px')
-               }
-               return false;
-          };
-     </script>
+  <!-- SCRIPTS -->
+  <script src="assets/js/jquery.js"></script>
+  <script src="assets/js/particles.min.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/custom.js"></script>
+  <script>
+    document.forms.search.onsubmit = function () {
+      const params = this.message.value;
+      const filmId = params.split('/')[4] || params;
+      if (filmId.startsWith('tt')) {
+        localStorage.removeItem('filmIdKinopoisk');
+        localStorage.setItem('filmIdImdb', filmId);
+        location.reload();
+      } else {
+        localStorage.removeItem('filmIdImdb');
+        localStorage.setItem('filmIdKinopoisk', filmId);
+        location.reload();
+      }
+      return false;
+    };
+  </script>
+  <script src="https://kinobox.tv/kinobox.min.js"></script>
+  <script>
+    new Kinobox('.kinobox_player', {
+      search: {
+        kinopoisk: localStorage.getItem('filmIdKinopoisk'),
+        imdb: localStorage.getItem('filmIdImdb')
+      },
+      'players': {
+        'Collaps': { 'enable': true, 'position': 1, 'token': '{token}' },
+        'Cdnmovies': { 'enable': true, 'position': 2, 'token': '{token}' },
+        'Alloha': { 'enable': true, 'position': 3, 'token': '{token}' },
+        'Hdvb': { 'enable': true, 'position': 4, 'token': '{token}' },
+        'Ashdi': { 'enable': true, 'position': 5, 'token': '{token}' },
+        'Bazon': { 'enable': true, 'position': 6, 'token': '{token}' },
+        'Iframe': { 'enable': true, 'position': 7, 'token': '{token}' },
+        'Kodik': { 'enable': true, 'position': 8, 'token': '{token}' },
+        'Videocdn': { 'enable': true, 'position': 9, 'token': '{token}' },
+        'Voidboost': { 'enable': true, 'position': 10, 'token': '{token}' }
+      }
+    }).init();
+  </script>
 
 </body>
 
