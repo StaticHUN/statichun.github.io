@@ -127,14 +127,8 @@ input {
     }
 }
 
-@media (min-width:1600px) {
+@media (min-width:1200px) {
     .player {
         height: 60vh;
-    }
-}
-
-@media (min-width:2000px) {
-    .player {
-        height: 80vh;
     }
 }
