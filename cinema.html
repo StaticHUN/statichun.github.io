@@ -11,8 +11,6 @@
 
   <title>StaticHUN - Cinema</title>
 
-  <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
-
   <!-- Main css -->
   <link rel="stylesheet" href="assets/css/style-player.css">
   <link href="https://fonts.googleapis.com/css?family=Lora|Merriweather:300,400" rel="stylesheet">
@@ -20,39 +18,21 @@
 
 <body>
 
-  <!-- PRE LOADER -->
-  <div class="preloader">
-    <div class="sk-spinner sk-spinner-wordpress">
-      <span class="sk-inner-circle"></span>
-    </div>
+  <!-- Home Section -->
+  <div id="particles-js"></div>
+  <div class="container">
+    <form name="search">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" name="message">
+      </div>
+    </form>
+    <h4>Input ID or URL from Kinopoisk/IMDB film/serial</h4>
+    <div class="player"></div>
   </div>
 
-  <!-- Home Section -->
-  <section id="home" class="main-home parallax-section">
-    <div class="overlay"></div>
-    <div id="particles-js"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 col-sm-12">
-          <form name="search">
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" name="message">
-            </div>
-          </form>
-          <h4>Input ID or URL from Kinopoisk/IMDB film/serial</h4>
-        </div>
-        <div class="col-md-12 col-sm-12">
-          <div class="kinobox_player"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- SCRIPTS -->
-  <script src="assets/js/jquery.js"></script>
   <script src="assets/js/particles.min.js"></script>
   <script src="assets/js/app.js"></script>
-  <script src="assets/js/custom.js"></script>
   <script>
     document.forms.search.onsubmit = function () {
       const params = this.message.value;
@@ -71,7 +51,7 @@
   </script>
   <script src="https://kinobox.tv/kinobox.min.js"></script>
   <script>
-    new Kinobox('.kinobox_player', {
+    new Kinobox('.player', {
       search: {
         kinopoisk: localStorage.getItem('filmIdKinopoisk'),
         imdb: localStorage.getItem('filmIdImdb')
