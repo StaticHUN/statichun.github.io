@@ -126,14 +126,14 @@ input {
     }
 }
 
-@media (min-width:992px) {
+@media (min-width:1600px) {
     .player {
         height: 60vh;
     }
 }
 
-@media (min-width:1200px) {
+@media (min-width:1800px) {
     .player {
-        height: 65vh;
+        height: 80vh;
     }
 }
