@@ -134,12 +134,12 @@ input {
 
 @media (min-width:1200px) {
     .player {
-        height: 70vh;
+        height: 65vh;
     }
 }
 
 @media (min-width:1400px) {
     .player {
-        height: 80vh;
+        height: 70vh;
     }
 }
