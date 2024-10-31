@@ -56,6 +56,7 @@ h4 {
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
   width: auto;
+  height: auto;
   padding-right: calc(var(--bs-gutter-x) * .5);
   padding-left: calc(var(--bs-gutter-x) * .5);
   margin-top: 2rem!important;
@@ -114,7 +115,7 @@ input {
 	box-shadow: 0 0 0 .25rem rgba(13,110,253,.25);
 }
 
-/*@media (min-width:576px) {
+@media (min-width:576px) {
     .player {
         height: 50vh;
     }
@@ -132,19 +133,7 @@ input {
     }
 }
 
-@media (min-width:1800px) {
-    .player {
-        height: 80vh;
-    }
-}*/
-
-@media (min-height:800px) {
-    .player {
-        height: 60vh;
-    }
-}
-
-@media (min-height:1000px) {
+@media (min-width:2000px) {
     .player {
         height: 80vh;
     }
