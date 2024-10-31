@@ -27,12 +27,18 @@
       </div>
     </form>
     <h4>Input ID or URL from Kinopoisk/IMDB film/serial</h4>
+    <p id="screen-width">Ширина экрана:</p>
     <div class="player"></div>
   </div>
 
   <!-- SCRIPTS -->
   <script src="assets/js/particles.min.js"></script>
   <script src="assets/js/app.js"></script>
+  <script>
+    const screenWidthElement = document.getElementById('screen-width');
+    const screenWidth = window.innerWidth;
+    screenWidthElement.textContent = `Ширина экрана: ${screenWidth}px`;
+  </script>
   <script>
     document.forms.search.onsubmit = function () {
       const params = this.message.value;
