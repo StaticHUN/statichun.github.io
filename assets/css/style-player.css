@@ -156,6 +156,6 @@ input {
 
 @media (min-width: 1500px) and (max-width: 1600px) {
     .player {
-        height: 65vh;
+        height: 55vh;
     }
 }
