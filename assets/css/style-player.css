@@ -153,3 +153,9 @@ input {
         height: 80vh;
     }
 }
+
+@media (min-width: 1500px) and (max-width: 1600px) {
+    .player {
+        height: 65vh;
+    }
+}
