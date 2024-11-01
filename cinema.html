@@ -26,13 +26,14 @@
         <input type="text" class="form-control" name="message">
       </div>
     </form>
-    <h4>Input ID or URL from Kinopoisk/IMDB film/serial</h4>
+    <h4>Input ID or URL from Kinopoisk/IMDB film/serial <p id="screen-size"/></h4>
     <div class="player"></div>
   </div>
 
   <!-- SCRIPTS -->
   <script src="assets/js/particles.min.js"></script>
   <script src="assets/js/app.js"></script>
+  <script>document.getElementById('screen-size').textContent = `${window.innerWidth}p X ${window.innerHeight}px`;</script>
   <script>
     document.forms.search.onsubmit = function () {
       const params = this.message.value;
