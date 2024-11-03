@@ -7,71 +7,64 @@
   <meta name="description" content="Online Movie Viewing on PC, TV, phone or tablet">
   <meta name="keywords" content="online,movie,film,viewing,free,kinopoisk,imdb">
   <meta name="author" content="Dmitry Sizov">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StaticHUN - Cinema</title>
-
   <!-- Main css -->
   <link rel="stylesheet" href="assets/css/style-player.css">
-  <link href="https://fonts.googleapis.com/css?family=Lora|Merriweather:300,400" rel="stylesheet">
-</head>
+  <link href="https://fonts.googleapis.com/css?family=Lora|Merriweather:300,400" rel="stylesheet"> </head>
 
 <body>
-
-  <!-- Home Section -->
-  <div id="particles-js"></div>
-  <div class="container">
-    <form name="search">
-      <div class="input-group mb-3">
-        <input type="text" placeholder="Input ID or URL from Kinopoisk/IMDB film/serial" class="form-control" name="message">
-      </div>
-    </form>
-    <!-- <p id="screen-size"></p> -->
-    <div class="player"></div>
-  </div>
-
-  <!-- SCRIPTS -->
-  <script src="assets/js/particles.min.js"></script>
-  <script src="assets/js/app.js"></script>
-  <!-- <script>document.getElementById('screen-size').textContent = `${window.innerWidth}p X ${window.innerHeight}px`;</script> -->
-  <script>
-    document.forms.search.onsubmit = function () {
+<!-- Home Section -->
+<div id="particles-js"></div>
+<div class="container">
+  <form name="search">
+    <div class="input-group mb-3">
+      <input type="text" placeholder="Input ID or URL from Kinopoisk/IMDB film/serial" class="form-control" name="message"> </div>
+  </form>
+  <!-- <p id="screen-size"></p> -->
+  <div class="player"></div>
+</div>
+<!-- SCRIPTS -->
+<script src="assets/js/particles.min.js"></script>
+<script src="assets/js/app.js"></script>
+<!-- <script>document.getElementById('screen-size').textContent = `${window.innerWidth}p X ${window.innerHeight}px`;</script> -->
+<script>
+  document.forms.search.onsubmit = function() {
       const params = this.message.value;
       const filmId = params.split('/')[4] || params;
-      if (filmId.startsWith('tt')) {
-        localStorage.removeItem('filmIdKinopoisk');
-        localStorage.setItem('filmIdImdb', filmId);
-        location.reload();
+      if(filmId.startsWith('tt')) {
+          localStorage.removeItem('filmIdKinopoisk');
+          localStorage.setItem('filmIdImdb', filmId);
+          location.reload();
       } else {
-        localStorage.removeItem('filmIdImdb');
-        localStorage.setItem('filmIdKinopoisk', filmId);
-        location.reload();
+          localStorage.removeItem('filmIdImdb');
+          localStorage.setItem('filmIdKinopoisk', filmId);
+          location.reload();
       }
       return false;
-    };
-  </script>
-  <script src="https://kinobox.tv/kinobox.min.js"></script>
-  <script>
-    new Kinobox('.player', {
+  };
+</script>
+<script src="https://kinobox.tv/kinobox.min.js"></script>
+<script>
+  new Kinobox('.player', {
       search: {
-        kinopoisk: localStorage.getItem('filmIdKinopoisk'),
-        imdb: localStorage.getItem('filmIdImdb')
+          kinopoisk: localStorage.getItem('filmIdKinopoisk'),
+          imdb: localStorage.getItem('filmIdImdb')
       },
       'players': {
-        'Collaps': { 'enable': true, 'position': 3, 'token': '{token}' },
-        'Cdnmovies': { 'enable': true, 'position': 4, 'token': '{token}' },
-        'Alloha': { 'enable': true, 'position': 1, 'token': '{token}' },
-        'Hdvb': { 'enable': true, 'position': 5, 'token': '{token}' },
-        'Ashdi': { 'enable': true, 'position': 6, 'token': '{token}' },
-        'Bazon': { 'enable': true, 'position': 7, 'token': '{token}' },
-        'Iframe': { 'enable': true, 'position': 8, 'token': '{token}' },
-        'Kodik': { 'enable': true, 'position': 9, 'token': '{token}' },
-        'Videocdn': { 'enable': true, 'position': 2, 'token': '{token}' },
-        'Voidboost': { 'enable': true, 'position': 10, 'token': '{token}' }
+          'Collaps': {'enable': true, 'position': 3, 'token': '{token}'},
+          'Cdnmovies': {'enable': true, 'position': 4, 'token': '{token}'},
+          'Alloha': {'enable': true, 'position': 1, 'token': '{token}'},
+          'Hdvb': {'enable': true, 'position': 5, 'token': '{token}'},
+          'Ashdi': {'enable': true, 'position': 6, 'token': '{token}'},
+          'Bazon': {'enable': true, 'position': 7, 'token': '{token}'},
+          'Iframe': {'enable': true, 'position': 8, 'token': '{token}'},
+          'Kodik': {'enable': true, 'position': 9, 'token': '{token}'},
+          'Videocdn': {'enable': true, 'position': 2, 'token': '{token}'},
+          'Voidboost': {'enable': true, 'position': 10, 'token': '{token}'}
       }
-    }).init();
-  </script>
-
+  }).init();
+</script>
 </body>
 
 </html>
