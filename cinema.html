@@ -30,8 +30,11 @@
 <!-- <script>document.getElementById('screen-size').textContent = `${window.innerWidth}p X ${window.innerHeight}px`;</script> -->
 <script>
   document.forms.search.onsubmit = function() {
-      const urlParams = new URLSearchParams(new URL(window.location.href).search);
+      const url = window.location.href;
+      console.log(url);
+      const urlParams = new URLSearchParams(new URL(url).search);
       const id = urlParams.get('id');
+      console.log(id);
       let filmId;
       if (id) {
         filmId = id;
