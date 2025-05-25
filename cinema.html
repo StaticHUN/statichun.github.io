@@ -30,9 +30,17 @@
 <!-- <script>document.getElementById('screen-size').textContent = `${window.innerWidth}p X ${window.innerHeight}px`;</script> -->
 <script>
   document.forms.search.onsubmit = function() {
-      const params = this.message.value;
-      const filmId = params.split('/')[4] || params;
-      if(filmId.startsWith('tt')) {
+      const urlParams = new URLSearchParams(new URL(window.location.href).search);
+      const id = urlParams.get('id');
+      let filmId;
+      if (id) {
+        filmId = id;
+      } else {
+        const params = this.message.value;
+        filmId = params.split('/')[4] || params;
+      }
+
+      if (filmId.startsWith('tt')) {
           localStorage.removeItem('filmIdKinopoisk');
           localStorage.setItem('filmIdImdb', filmId);
           location.reload();
