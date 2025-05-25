@@ -29,30 +29,20 @@
 <script src="assets/js/app.js"></script>
 <!-- <script>document.getElementById('screen-size').textContent = `${window.innerWidth}p X ${window.innerHeight}px`;</script> -->
 <script>
-  document.forms.search.onsubmit = function() {
-      const url = window.location.href;
-      console.log(url);
-      const urlParams = new URLSearchParams(new URL(url).search);
-      const id = urlParams.get('id');
-      console.log(id);
-      let filmId;
-      if (id) {
-        filmId = id;
-      } else {
-        const params = this.message.value;
-        filmId = params.split('/')[4] || params;
-      }
+  const urlParams = new URLSearchParams(new URL(window.location.href).search);
+  const filmId = urlParams.get('message');
+  console.log(filmId);
 
-      if (filmId.startsWith('tt')) {
-          localStorage.removeItem('filmIdKinopoisk');
-          localStorage.setItem('filmIdImdb', filmId);
-          location.reload();
-      } else {
-          localStorage.removeItem('filmIdImdb');
-          localStorage.setItem('filmIdKinopoisk', filmId);
-          location.reload();
-      }
-      return false;
+  if (typeof filmId !== 'null' && filmId.startsWith('tt')) {
+      localStorage.removeItem('filmIdKinopoisk');
+      localStorage.setItem('filmIdImdb', filmId);
+  } else if (typeof filmId !== 'null') {
+      localStorage.removeItem('filmIdImdb');
+      localStorage.setItem('filmIdKinopoisk', filmId);
+  }
+
+  document.forms.search.onsubmit = function() {
+      location.reload();
   };
 </script>
 <script src="https://kinobox.tv/kinobox.min.js"></script>
