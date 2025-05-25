@@ -30,7 +30,8 @@
 <!-- <script>document.getElementById('screen-size').textContent = `${window.innerWidth}p X ${window.innerHeight}px`;</script> -->
 <script>
   const urlParams = new URLSearchParams(new URL(window.location.href).search);
-  const filmId = urlParams.get('message');
+  const params = urlParams.get('message');
+  const filmId = params.split('/')[4] || params;
   console.log(filmId);
 
   if (typeof filmId !== 'null' && filmId.startsWith('tt')) {
