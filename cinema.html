@@ -19,66 +19,45 @@
 <div class="container">
   <form name="search">
     <div class="input-group">
-      <input type="text" placeholder="Input ID or URL from Kinopoisk film/serial" class="form-control" name="message"> </div>
+      <input type="text" placeholder="Input ID or URL from Kinopoisk/IMDb film/serial" class="form-control" name="message"> </div>
   </form>
-  <!-- <p id="screen-size"></p> -->
 </div>
-<!--<div class="player"></div>-->
-<div id="kinobd" data-language="en" data-kinopoisk=""></div>
+<div id="kinobd"></div>
 <!-- SCRIPTS -->
 <script src="assets/js/particles.min.js"></script>
 <script src="assets/js/app.js"></script>
-<!-- <script>document.getElementById('screen-size').textContent = `${window.innerWidth}p X ${window.innerHeight}px`;</script> -->
 <script>
   const urlParams = new URLSearchParams(new URL(window.location.href).search);
   const params = urlParams.get('message');
   const filmId = params.split('/')[4] || params;
-  console.log(filmId);
 
   if (typeof filmId !== 'null' && filmId.startsWith('tt')) {
-      localStorage.removeItem('filmIdKinopoisk');
-      localStorage.setItem('filmIdImdb', filmId);
+    localStorage.removeItem('filmIdKinopoisk');
+    localStorage.setItem('filmIdImdb', filmId.substring(2));
+    console.log(filmId);
+
+    document.getElementById('kinobd').dataset.player = "videospider";
+    document.getElementById('kinobd').dataset.imdb = filmId;
   } else if (typeof filmId !== 'null') {
-      localStorage.removeItem('filmIdImdb');
-      localStorage.setItem('filmIdKinopoisk', filmId);
+    localStorage.removeItem('filmIdImdb');
+    localStorage.setItem('filmIdKinopoisk', filmId);
+    console.log(filmId);
+
+<!--    document.getElementById('kinobd').dataset.language = "en";-->
+    document.getElementById('kinobd').dataset.kinopoisk = filmId;
+  } else if (typeof localStorage.getItem('filmIdKinopoisk') !== 'null') {
+<!--    document.getElementById('kinobd').dataset.language = "en";-->
+    document.getElementById('kinobd').dataset.kinopoisk = localStorage.getItem('filmIdKinopoisk');
+  } else if (typeof localStorage.getItem('filmIdImdb') !== 'null') {
+    document.getElementById('kinobd').dataset.player = "videospider";
+    document.getElementById('kinobd').dataset.imdb = localStorage.getItem('filmIdImdb');
   }
 
   document.forms.search.onsubmit = function() {
       location.reload();
   };
 </script>
-<script>
-  const filmId = localStorage.getItem('filmIdKinopoisk');
-  if (filmId) {
-    const kinobdDiv = document.getElementById('kinobd');
-
-    if (kinobdDiv) {
-      kinobdDiv.dataset.kinopoisk = filmId;
-    }
-  }
-</script>
 <script src="//kinobd.net/js/player_.js"></script>
-<!--<script src="https://kinobox.tv/kinobox.min.js"></script>-->
-<!--<script>-->
-<!--  new Kinobox('.player', {-->
-<!--      search: {-->
-<!--          kinopoisk: localStorage.getItem('filmIdKinopoisk'),-->
-<!--          imdb: localStorage.getItem('filmIdImdb')-->
-<!--      },-->
-<!--      'players': {-->
-<!--          'Collaps': {'enable': true, 'position': 3, 'token': '{token}'},-->
-<!--          'Cdnmovies': {'enable': true, 'position': 4, 'token': '{token}'},-->
-<!--          'Alloha': {'enable': true, 'position': 1, 'token': '{token}'},-->
-<!--          'Hdvb': {'enable': true, 'position': 5, 'token': '{token}'},-->
-<!--          'Ashdi': {'enable': true, 'position': 6, 'token': '{token}'},-->
-<!--          'Bazon': {'enable': true, 'position': 7, 'token': '{token}'},-->
-<!--          'Iframe': {'enable': true, 'position': 8, 'token': '{token}'},-->
-<!--          'Kodik': {'enable': true, 'position': 9, 'token': '{token}'},-->
-<!--          'Videocdn': {'enable': true, 'position': 2, 'token': '{token}'},-->
-<!--          'Voidboost': {'enable': true, 'position': 10, 'token': '{token}'}-->
-<!--      }-->
-<!--  }).init();-->
-<!--</script>-->
 </body>
 
 </html>
