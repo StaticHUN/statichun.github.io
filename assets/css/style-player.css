@@ -48,14 +48,6 @@ body {
     Home section              
 -----------------------------------------*/
 
-#particles-js {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-}
-
 .container {
 	margin-top: 1rem!important;
 	margin-bottom: 1rem!important;
@@ -124,56 +116,5 @@ input::placeholder {
   height: clamp(200px, 90vh - 40px, 1100px);
   margin: 20px auto;
   box-sizing: border-box;
-  border: 4px solid black;
-  padding: 10px;
+  overflow: auto;
 }
-
-/*
-@media (min-width:576px) {
-	.player {
-		height: 50vh;
-	}
-}
-
-@media (min-width:768px) {
-	.player {
-		height: 55vh;
-	}
-}
-
-@media (min-width:992px) {
-	.player {
-		height: 60vh;
-	}
-}
-
-@media (min-width:1200px) {
-	.player {
-		height: 65vh;
-	}
-}
-
-@media (min-width:1400px) {
-	.player {
-		height: 70vh;
-	}
-}
-
-@media (min-width:1600px) {
-	.player {
-		height: 75vh;
-	}
-}
-
-@media (min-width:1800px) {
-	.player {
-		height: 80vh;
-	}
-}
-
-@media (min-width: 1500px) and (max-width: 1600px) {
-	.player {
-		height: 55vh;
-	}
-}
-*/
